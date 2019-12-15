@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Trianglify from 'trianglify';
+import TypeWriter from './components/TypeWriter';
 
 class App extends Component {
   componentDidMount () {
     this.setBg();
-    console.log(Trianglify);
   }
 
   setBg = () => {
@@ -45,7 +45,8 @@ class App extends Component {
                 <div>
                   <div id="type-wrap">
                     <div id="type-wrap-inner" className="box">
-                      <div className="text-center"><h1 id="type"></h1><h1 id="blinker">|</h1></div><h1 id="type-hidden">Development |</h1>
+                      <TypeWriter period={200} textArray={["Amelia Carlie", "Development", "& Design"]} />
+                      {/* <div className="text-center"><h1 id="type"></h1><h1 id="blinker">|</h1></div><h1 id="type-hidden">Development |</h1> */}
                       <hr className="home" />
                       <nav className="text-center home-nav">
                         <a href="#about">About</a><a href="#work">Work</a><a href="#about">Contact</a>
