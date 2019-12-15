@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import Trianglify from 'trianglify';
 import TypeWriter from './components/TypeWriter';
+import SocialLinks from './components/SocialLinks';
+import Profile from './assets/images/profile_square.png';
+import IconContainer from './components/IconContainer';
+import items from './assets/js/portfolioItems';
 
 class App extends Component {
   componentDidMount () {
     this.setBg();
+    window.addEventListener("resize", this.setBg.bind(this));
   }
 
   setBg = () => {
@@ -46,7 +51,6 @@ class App extends Component {
                   <div id="type-wrap">
                     <div id="type-wrap-inner" className="box">
                       <TypeWriter period={200} textArray={["Amelia Carlie", "Development", "& Design"]} />
-                      {/* <div className="text-center"><h1 id="type"></h1><h1 id="blinker">|</h1></div><h1 id="type-hidden">Development |</h1> */}
                       <hr className="home" />
                       <nav className="text-center home-nav">
                         <a href="#about">About</a><a href="#work">Work</a><a href="#about">Contact</a>
@@ -57,11 +61,7 @@ class App extends Component {
   
                   </div>
   
-                  <ul className="social-links">
-                    <li><a href="https://github.com/acarlie" target="_blank"><span className="fab fa-github social-icons"></span></a></li>
-                    <li><a href="https://www.linkedin.com/in/acarlie"><span className="fab fa-linkedin-in social-icons"></span></a></li>
-                    <li><a href="https://codepen.io/acarlie/"><span className="fab fa-codepen social-icons"></span></a></li>
-                  </ul>
+                  <SocialLinks />
                 </div>
               </div>
             </section>
@@ -79,7 +79,7 @@ class App extends Component {
   
                   <div className="col col-2">
                     <div id="profile-wrapper" className="profile-wrapper">
-                      <img src="assets/images/profile_square.png" alt="" className="img-responsive img-profile" />
+                      <img src={Profile} alt="" className="img-responsive img-profile" />
                       <div className="icon-container">
                         <div className="icon-content">Amelia Carlie</div>
                         <span className="icon"><i className="fas fa-user"></i></span>
@@ -96,22 +96,15 @@ class App extends Component {
                   </div>
   
                   <div className="col col-4">
-  
-                    <div className="icon-container icon-container-info">
-                      <div className="icon-content">
-                        <p>
-                          I am a full-stack developer passionate about UI/UX. My love of coding started early on, styling Neopets guild layouts in the early
-                          2000s. Since then, D.R.Y. has become a personal mantra.
-                                      </p>
-                        <p>
-                          With 5 years experience in the graphic design field, I am now applying my knowledge of color theory and composition to my daily development projects.
-                                      </p>
-                      </div>
-                      <span className="icon"><i className="fas fa-info"></i></span>
-                    </div>
-  
-                    <div className="icon-container icon-container-info">
-                      <div className="icon-content">
+                    <IconContainer icon='info'>
+                      <p>
+                        I am a full-stack developer passionate about UI/UX. My love of coding started early on, styling Neopets guild layouts in the early 2000s. Since then, D.R.Y. has become a personal mantra.
+                      </p>
+                      <p>
+                        With 5 years experience in the graphic design field, I am now applying my knowledge of color theory and composition to my daily development projects.
+                      </p>
+                    </IconContainer>
+                    <IconContainer icon='code'>
                         <ul className="primary-list">
                           <li><span className="heading">Languages:</span> HTML5, CSS3, JavaScript(ES5 & ES6)</li>
                           <li><span className="heading">Frameworks:</span> React</li>
@@ -120,30 +113,18 @@ class App extends Component {
                           <li><span className="heading">Back-End:</span> Express, MySQL, MongoDB, Mongoose, Firebase</li>
                           <li><span className="heading">Other Technologies:</span> Node.js</li>
                         </ul>
-                      </div>
-                      <span className="icon"><i className="fas fa-code"></i></span>
-                    </div>
-  
-                    <div className="icon-container icon-container-info">
-                      <div className="icon-content">
-                        <ul className="primary-list">
-                          <li><span className="heading">Tools:</span> PhotoShop, Illustrator, InDesign</li>
-                          <li><span className="heading">Design:</span> Color Theory, Illustration, Typography,
-                                              Branding, Composition</li>
-                        </ul>
-                      </div>
-                      <span className="icon"><i className="fas fa-pencil-ruler"></i></span>
-                    </div>
-  
-                    <div className="icon-container icon-container-info">
-                      <div className="icon-content">
-                        <ul className="primary-list">
-                          <li><span className="heading">Hobbies:</span> Photography, Making Pizza</li>
-                        </ul>
-                      </div>
-                      <span className="icon"><i className="fas fa-pizza-slice"></i></span>
-                    </div>
-  
+                    </IconContainer>
+                    <IconContainer icon='pencil-ruler'>
+                      <ul className="primary-list">
+                        <li><span className="heading">Tools:</span> PhotoShop, Illustrator, InDesign, Adobe XD</li>
+                        <li><span className="heading">Design:</span> Color Theory, Illustration, Typography, Branding, Composition</li>
+                      </ul>
+                    </IconContainer>
+                    <IconContainer icon='pizza-slice'>
+                      <ul className="primary-list">
+                        <li><span className="heading">Hobbies:</span> Photography, Making Pizza</li>
+                      </ul>
+                    </IconContainer>
                   </div>
                 </div>
               </div>
@@ -166,7 +147,13 @@ class App extends Component {
               <div className="wrapper">
                 <div className="row">
                   <div id="portfolio" className="col col-6 grid">
-  
+                    {
+                      items.map((item, i) => {
+                        return(
+                        <div>{item.title}</div>
+                        );
+                      })
+                    }
   
                   </div>
                 </div>
@@ -184,11 +171,7 @@ class App extends Component {
           <footer>
   
             <section id="social" className="footer-top">
-              <ul className="social-links">
-                <li><a href="https://github.com/acarlie" target="_blank"><span className="fab fa-github social-icons"></span></a></li>
-                <li><a href="https://www.linkedin.com/in/acarlie"><span className="fab fa-linkedin-in social-icons"></span></a></li>
-                <li><a href="https://codepen.io/acarlie/"><span className="fab fa-codepen social-icons"></span></a></li>
-              </ul>
+              <SocialLinks />
             </section>
   
             <p className="text-center text-sm footer-bottom">© Amelia Carlie 2019</p>
