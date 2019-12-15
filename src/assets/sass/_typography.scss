@@ -1,0 +1,59 @@
+/*-------------Typography-------------*/
+::selection{
+    color: $color-neutral-lt;
+    background-color: $color-secondary;
+}
+
+body{
+    -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+    font-family: $body-font;
+    font-size: 16px;
+    color: $color-neutral-dk;
+    line-height: 1.5em;
+    font-weight: 400;
+}
+
+h1,h2,h3,h4{
+    @include headings-bold;
+}
+
+h1#type, h1#blinker, h1#type-hidden{
+    line-height: 1em;
+}
+
+h1#type{
+    text-shadow: 2px 2px #ddd;
+}
+
+h3{
+    font-size: 1.125em;
+}
+
+h5, h6{
+    @include headings-upper;
+}
+
+h5{
+    font-size: 1.125em;
+}
+
+.grid h3{
+    padding: 0;
+    margin: 0;
+}
+
+.item-title{
+    @include headings-bold;
+    font-size: 1.075em;
+}
+
+.heading{
+    font-weight: bold;
+}
+
+p:not(:last-child){
+    margin-bottom: .5em;
+}
+
+

@@ -1,0 +1,65 @@
+/*-------------Typewriter-------------*/
+#type-wrap{
+    margin: 0 auto;
+    border-radius: .75em;
+    overflow: hidden;
+    margin-bottom: 1em;
+    box-shadow: $shadow;
+}
+
+#type{
+    display: inline-block;
+    height: 100%;
+}
+
+#type-hidden{
+    visibility: hidden;
+    height: 0;
+}
+
+#blinker{
+    @include main-gradient;
+    display: inline-block;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+#blinker.blink{
+    animation-name: type;
+    animation-duration: .75s;
+    animation-iteration-count: infinite;
+}
+
+/*-------------Animations-------------*/
+@keyframes social-hover {
+    100%{
+        line-height: 2.75em;
+        height: 2.75em;
+        width: 2.75em;
+        margin: .375em;
+        color: $color-neutral-dk;
+        border-radius: 0px;
+    }
+}
+
+@keyframes type{
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes loader{
+    0% {
+        width: 0;
+    }
+    5%{
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}

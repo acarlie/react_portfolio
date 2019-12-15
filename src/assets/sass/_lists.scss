@@ -1,0 +1,11 @@
+/*-------------Lists-------------*/
+ul.primary-list{
+    list-style: none;
+    @include no-space;
+
+    li:not(:first-child){
+        border-top: 1px solid $color-neutral-med;
+        margin-top: .25em;
+        padding-top: .25em;
+    }
+}

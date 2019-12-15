@@ -1,0 +1,52 @@
+var port = {
+    portfolio: document.getElementById('portfolio'),
+    items: [
+      { title: "All Things {Front-End}", img: "assets/dist/images/sm/all-things-front-end-sm.jpg", desc: "'All Things {Front-End}' is an article scraper where users can add notes and save articles. Created with Node.js, MongoDB, Express, Handlebars, SCSS, BEM, Gulp, Cheerio, and Axios.", tags: [""], url: "https://all-things-fe.herokuapp.com/", repo: "https://github.com/acarlie/all_things_front-end" },
+      { title: "Remember It", img: "assets/dist/images/sm/remember-it-sm.jpg", desc: "'Remember It' is a memory game created with React.", tags: ["React"], url: "http://acarlie.com/remember_it/", repo: "https://github.com/acarlie/remember_it"},
+      { title: "Color Me ____.", img: "assets/dist/images/sm/color-me-4-sm.jpg", desc: "'Color Me ___' is a word guessing game created with Vanilla JS.", tags: ["Vanilla JS", "UI/UX"], url: "https://acarlie.com/Color_Me", repo: "https://github.com/acarlie/Color_Me" },
+      { title: "Giphy Search", img: "assets/dist/images/sm/giphy-2-sm.jpg", desc: "'Giphy Search' was created using Giphy's API. Users can favorite gifs and copy gif embed links. Designed mobile first.", tags: ["jQuery, JavaScript, AJAX"], url: "https://acarlie.com/Giphy_Search/", repo: "https://github.com/acarlie/Giphy_Search" },
+      { title: "Movie Comparison App", img: "assets/dist/images/sm/movie-comp-sm.jpg", desc: "Movie comparison app created with AJAX, jQuery, Chart.js, and Materialize. Designed mobile first.", tags: ["jQuery, JavaScript, UI/UX, Materialize, AJAX"], url: "https://acarlie.com/movie_comparison_app/", repo: "https://github.com/acarlie/movie_comparison_app" },
+      { title: "Bamazon", img: "assets/images/portfolio/bamazon.gif", desc: "Node.js and MySQL inventory management app with customer, manager, and supervisor views.", tags: ["Node.JS, JavaScript, MySQL"], url: "", repo: "https://github.com/acarlie/bamazon"},
+      { title: "Google Books Search", img: "assets/dist/images/sm/google-books-sm.jpg", desc: "'Google Books Search' searches the Google Books API for books and allows users to save books. 'Google Books Search' is a full-stack MERN (Mongo, Express, React, Node) app using the Antd React component library.", tags: ["Node.JS, JavaScript, Mongo, React, Express"], url: "https://books-search-mern.herokuapp.com/", repo: "https://github.com/acarlie/google_books_search"},
+      { title: "Liri Node App", img: "assets/dist/images/sm/liri_spotify-this-sm.png", desc: "Node CLI App for searching OMDB, Spotify, and Bands in Town. Created with ES6, Node, Axios, Inquirer.js, and Moment.js.", tags: ["ES6, Node.JS"], url: "", repo: "https://github.com/acarlie/liri_node_app" },
+      { title: "Train Scheduler", img: "assets/dist/images/sm/train-schedule-sm.jpg", desc: "Train scheduling app created using jQuery, Firebase, and Materialize.", tags: ["jQuery, Firebase, Materialize"], url: "https://acarlie.com/Train_Scheduler/", repo: "https://github.com/acarlie/Train_Scheduler" },
+      // { title: "Wags with Friends", img: "assets/images/portfolio/wags-with-friends-sm.jpg", desc: "App for finding playmates for pets. Created with SASS, MySQL, Sequelize, Node.js, Express, Express-Handlebars.", tags: ["MySQL, Sequelize, SASS"], url: "https://project2-10-2019.herokuapp.com/", repo: "https://github.com/acarlie/wags_with_friends" },
+      { title: "Burger App", img: "assets/dist/images/sm/burger-app-sm.jpg", desc: "CRUD app created with Node.js, Express, Handlebars, MySQL, jQuery, and Bootstrap.", tags: ["jQuery, Bootstrap, MySQL, Node, Express, Handlebars"], url: "https://blooming-falls-67802.herokuapp.com/", repo: "https://github.com/acarlie/burger" },
+      { title: "Women of Scifi and Fantasy Trivia", img: "assets/dist/images/sm/trivia-game-sm.jpg", desc: "Timed trivia game created with jQuery and JavaScript.", tags: ["jQuery, JavaScript"], url: "https://acarlie.com/Trivia_Game/", repo: "https://github.com/acarlie/Trivia_Game" },
+      { title: "A Stranger Game", img: "assets/dist/images/sm/a-stranger-game-2-sm.jpg", desc: "Player vs algorithm game created using jQuery and JavaScript.", tags: ["jQuery"], url: "https://acarlie.com/Stranger_Things_Game/", repo: "https://github.com/acarlie/Stranger_Things_Game" },
+      { title: "Star Trek Character Quiz", img: "assets/dist/images/sm/star-trek-sm.jpg", desc: "'Star Trek Character Quiz' is a quiz app created with Node.js, Express, and the Semantic UI library.", tags: ["Node.JS, JavaScript, Express"], url: "https://intense-beyond-55341.herokuapp.com/", repo: "https://github.com/acarlie/star_trek" },
+      { title: "CLI Word Guessing Game", img: "assets/images/portfolio/example.gif", desc: "Node.js word guessing game using JavaScript constructors.", tags: ["Node.JS, JavaScript"], url: "", repo: "https://github.com/acarlie/Constructor_Word_Guess" },
+      { title: "Wikipedia Search", img: "assets/dist/images/sm/wikipedia-viewer-sm.jpg", desc: "Wikipedia search using jQuery, Wikipedia's API, SCSS, and Pug.", tags: ["jQuery", "Rest APIs", "UI/UX", "SCSS", "Bootstrap"], url: "https://codepen.io/acarlie/pen/mERLej", repo: "" },
+      { title: "Vanilla JS Typewriter", img: "assets/dist/images/sm/typewriter-sm.jpg", desc: "Vanilla JS typerwiter created using setInterval, clearInterval, setTimeout, and ES6 classes.", tags: ["Vanilla JS"], url: "https://codepen.io/acarlie/pen/KOqmPN", repo: "" }
+    ],
+    generate: function() {
+      $.each(port.items, function (i) {
+        var arr = port.items,
+            figWrap = $('<figure>').addClass('grid-item').appendTo(port.portfolio).attr('data-aos', 'fade-up'),
+            img = $('<img>').addClass('grid-item-img').attr('src', arr[i].img).attr('alt', arr[i].desc).appendTo(figWrap),
+            info = $('<div>').addClass('grid-item-info').appendTo(figWrap),
+            infoWrap = $('<div>').addClass('grid-item-info-wrap').appendTo(info),
+            figTitle = $('<h4>').addClass('grid-item-title').text(arr[i].title),
+            figCap = $('<figcaption>').addClass('grid-item-cap').text(arr[i].desc),
+            linksWrap = $('<ul>').addClass('grid-item-view'),
+            deployedWrap = $('<li>'),
+            repoWrap = $('<li>'),
+            deployedLink = $('<a>').attr('href', arr[i].url).attr('target', '_blank').addClass('grid-item-link'),
+            repoLink = $('<a>').attr('href', arr[i].repo).attr('target', '_blank').addClass('grid-item-link');
+
+        if (arr[i].url.length > 0 && arr[i].url.indexOf('codepen') > -1){
+          deployedLink.text('View on CodePen ⟶').appendTo(deployedWrap);
+        } else if (arr[i].url.length > 0){
+          deployedLink.text('View Deployed Project ⟶').appendTo(deployedWrap);
+        }
+
+        if (arr[i].repo.length > 0){
+          repoLink.text('View the Repo ⟶').appendTo(repoWrap);
+        }
+
+        linksWrap.append(deployedWrap, repoWrap);
+        infoWrap.append(figTitle, figCap, linksWrap);
+      });
+    }
+  }
+  

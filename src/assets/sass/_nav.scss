@@ -1,0 +1,101 @@
+/*-------------Link Styling------------*/
+#{$links-not-hover}{
+    text-decoration: none;
+    color: $color-primary;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+
+/*-------------Home Nav------------*/
+.home-nav{
+
+    @include headings-upper;
+    font-weight: 500;
+
+    #{$links-not-hover}{
+        padding: 0 .5em;
+        color: $color-neutral-mddk;
+        transition: color .5s;
+    }
+
+    a:hover{
+        color: $color-neutral-dk;
+        text-decoration: none;
+    }
+
+}
+
+/*-------------Wrapper Nav------------*/
+.wrapper-nav{
+    @include headings-upper;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-weight: 500;
+
+    #{$links-not-hover}.wrapper-link{
+        color: $color-neutral-mddk;
+        transition: color .75s;
+    }
+    
+    a:hover.wrapper-link{
+        color: $color-neutral-lt;
+        text-decoration: none;
+    }
+
+}
+
+/*-------------Social-------------*/
+ul.social-links{
+    list-style: none;
+    @include no-space;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    li{
+        a span{
+            @include shadow-box;
+            font-size: 1.2em;
+            height: 2.5em;
+            width: 2.5em;
+            line-height: 2.5em;
+            text-align: center;
+            border-radius: 100%;
+            margin: .5em;
+            color: $color-neutral-dk;
+        }
+
+        &:hover a span{
+            animation-name: social-hover;
+            animation-duration: .75s;
+            animation-fill-mode: forwards;
+            transition-timing-function: cubic-bezier(.38,.38,.12,.96);
+        }
+        
+    }
+}
+
+/*-------------Buttons------------*/
+a.btn-dark{
+    display: block;
+    padding: 1em;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+    transition: all .5s;
+    background-color: $color-black-lt;
+    color: $color-neutral-med;
+    @include headings-upper;
+
+    &:hover{
+        text-decoration: none;
+        background-color: $color-black;
+        color: $color-neutral-lt;
+    }
+}

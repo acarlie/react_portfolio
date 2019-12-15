@@ -1,0 +1,74 @@
+
+/*-------------Portfolio-------------*/
+.grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-column-gap: .5em;
+    grid-row-gap: .5em;
+}
+
+.grid-item{
+    @include col-flex;
+    position: relative;
+    overflow: hidden;
+    box-shadow: $shadow-dk;
+    height: 100%;
+
+    &:hover .grid-item-info{
+        opacity: 1;
+    }
+
+}
+
+.grid-item-img{
+    width: 100%;
+    opacity: .9;
+    min-height: 300px;
+    object-fit: cover;
+    transition: opacity .75s;
+}
+
+.grid-item-info{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    background:rgba(0,0,0,.5);  
+    background: -webkit-linear-gradient(45deg, rgba(0,0,0,.85), rgba(0,0,0,0));  
+    background: linear-gradient(45deg, rgba(0,0,0,.85), rgba(0,0,0,0)); 
+    opacity: 0;
+    transition: opacity .75s ease, visibility 1s ease;
+    text-shadow: 0 0 10px rgba(0,0,0,.9);
+
+}
+
+.grid-item-title{
+    color: white;
+}
+
+.grid-item-cap{
+    color: white;
+    margin-bottom: .5em;
+}
+
+.grid-item-view{
+    color: $color-neutral-mddk;
+    font-family: $headings-font;
+    text-transform: uppercase;
+}
+
+#{$links-not-hover}{
+    &.grid-item-link{
+        color: $color-neutral-med;
+        transition: color .5s;
+    }
+}
+
+a:hover.grid-item-link{
+    color: white;
+    text-decoration: none;
+}

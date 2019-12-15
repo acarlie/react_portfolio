@@ -1,0 +1,132 @@
+/*-------------Helpers-------------*/
+
+.mb{
+    margin-bottom: 1em;
+}
+
+.margin-bottom{
+    margin-bottom: 4em;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.text-sm{
+    font-size: .75em;
+}
+
+.img-responsive{
+    width: 100%;
+}
+
+.img-profile{
+    margin: 0 auto;
+}
+
+.box{
+    @include icon-box;
+    padding: 2em;
+}
+
+.container-dark{
+    box-shadow: 0px 0px 25px -10px rgba(0,0,0,.50) inset;
+    background: radial-gradient(circle, rgba(50,50,50,1) 0%, rgba(19,19,19,1) 100%);
+}
+
+.container-light{
+    background-color: rgba(255,255,255, 1);
+    box-shadow: $shadow;
+}
+
+hr.home{
+    border: none;
+    background-color: $color-neutral-med;
+    height: 1px;
+    margin: 1.5em 0;
+}
+
+/*-------------Icon Containers-------------*/
+.icon-container{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+
+.icon{
+    min-width: 50px;
+    text-align: center;
+    @include icon-box;
+    align-self: stretch;
+    color: $color-neutral-med;
+    transition: color .75s;
+}
+
+.icon-content{
+    @include icon-box;
+    width: 100%;
+    z-index: 2;
+
+    &:focus  ~ .icon, &:hover ~ .icon{
+        color: $color-primary;
+    }
+}
+
+.icon-container-info{
+    margin-bottom: .5em;
+
+    .icon{
+        min-width: 90px;
+        border-radius: .75em 0 0 .75em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .icon-content{
+        border-radius: 0 .75em .75em 0;
+        padding: 1.25em;
+    }
+
+}
+
+
+#profile-wrapper.profile-wrapper{
+    margin-bottom: .5em;
+
+    .img-profile{
+        border-radius: .75em .75em 0 0;
+        margin-bottom: -.5em;
+    }    
+
+    .icon-container{
+        border-top: .75px solid $color-neutral-med;
+
+        .icon{
+            box-shadow: $shadow-inset;
+        }
+
+        .icon-content{
+            box-shadow: none;
+        }
+
+        &:last-child{
+            border-radius: 0 0 .75em .75em;
+            overflow: hidden;
+        }
+       
+    }
+
+
+}
+
+
+@media only screen and (min-width:800px){
+    .img-profile{
+        width: 100%;
+        height: auto;
+    }
+}
+

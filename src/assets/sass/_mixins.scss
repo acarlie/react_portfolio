@@ -1,0 +1,60 @@
+@mixin main-gradient{
+    background: $color-primary;
+    background: -webkit-linear-gradient(45deg, $color-primary, $color-secondary);
+    background: linear-gradient(45deg, $color-primary, $color-secondary);
+}
+
+@mixin dark-gradient{
+    background: rgba(19,19,19,1);
+    background: -webkit-linear-gradient(45deg, rgba(70,70,70,1), rgba(19,19,19,1));
+    background: linear-gradient(45deg, rgba(70,70,70,1), rgba(19,19,19,1));
+}
+
+@mixin light-gradient{
+    background: #ddd;
+    background: -webkit-linear-gradient(45deg, #f9f9f9, #ddd);
+    background: linear-gradient(45deg, #f9f9f9, #ddd);
+}
+
+@mixin headings-bold{
+    font-family: $headings-font;
+    font-weight: bold;
+}
+
+@mixin headings-upper{
+    font-family: $headings-font;
+    text-transform: uppercase;
+}
+
+@mixin flex-col-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin shadow-box{
+    background-color: $color-neutral-lt;
+    box-shadow: $shadow;
+}
+
+@mixin icon-box{
+    background-color: $color-neutral-lt;
+    box-shadow: $shadow;
+    padding: $box-padding;
+}
+
+@mixin col-flex{
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin no-space{
+    padding: 0px;
+    margin: 0px;
+}
+
+@mixin margin-center{
+    margin: 0 auto;
+}
+
