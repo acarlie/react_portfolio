@@ -5,8 +5,15 @@ import SocialLinks from './components/SocialLinks';
 import Profile from './assets/images/profile_square.png';
 import IconContainer from './components/IconContainer';
 import items from './assets/js/portfolioItems';
+import PortfolioItem from './components/PortfolioItem';
 
 class App extends Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      loaded: false
+    }
+  }
   componentDidMount () {
     this.setBg();
     window.addEventListener("resize", this.setBg.bind(this));
@@ -27,6 +34,7 @@ class App extends Component {
 
     return (
       <div className="App">
+
         {/* Loader */}
         {/* <div id="loader" className="container-dark">
           <div id="loader-inner">
@@ -57,7 +65,7 @@ class App extends Component {
                       </nav>
                     </div>
   
-                    <a href="assets/pdfs/AmeliaCarlie_Resume.pdf" target="_blank" className="btn-dark">Download My Resume</a>
+                    <a href={process.env.PUBLIC_URL + 'assets/pdfs/AmeliaCarlie_Resume.pdf'} target="_blank" rel="noopener noreferrer" className="btn-dark">Download My Resume</a>
   
                   </div>
   
@@ -150,7 +158,13 @@ class App extends Component {
                     {
                       items.map((item, i) => {
                         return(
-                        <div>{item.title}</div>
+                          <PortfolioItem
+                            title={item.title}
+                            img={item.img}
+                            url={item.url}
+                            repo={item.repo}
+                            desc={item.desc}
+                          />
                         );
                       })
                     }

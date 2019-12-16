@@ -24,7 +24,7 @@ gulp.task('img-res', function () {
         '-sm': {
             resize: { width: 1300, height: jimp.Auto }
         }
-    })).pipe(gulp.dest('src/assets/dist/images/sm'));
+    })).pipe(gulp.dest('public/assets/images/sm'));
 });
 
 gulp.task('img-min', function(){

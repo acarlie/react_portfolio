@@ -292,7 +292,6 @@ body {
   height: 100%;
   position: fixed;
   background-color: #EB6087;
-  background-image: url("");
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -521,7 +520,6 @@ ul.primary-list {
   width: 100%;
   opacity: .9;
   min-height: 300px;
-  -o-object-fit: cover;
   object-fit: cover;
   -webkit-transition: opacity .75s;
   transition: opacity .75s; }
