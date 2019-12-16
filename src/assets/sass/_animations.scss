@@ -52,6 +52,24 @@
     }
 }
 
+@keyframes opacity{
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes loaderOut{
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
 @keyframes loader{
     0% {
         width: 0;

@@ -11,12 +11,23 @@ class App extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      loaded: false
+      loaded: false,
+      loader: ''
     }
   }
   componentDidMount () {
     this.setBg();
     window.addEventListener("resize", this.setBg.bind(this));
+    setTimeout(() => {
+      this.setState({
+        loader: 'done'
+      })
+    }, 3000)
+    setTimeout(() => {
+      this.setState({
+        loaded: true
+      })
+    }, 4000)
   }
 
   setBg = () => {
@@ -36,12 +47,15 @@ class App extends Component {
       <div className="App">
 
         {/* Loader */}
-        {/* <div id="loader" className="container-dark">
-          <div id="loader-inner">
-            <h5>Loading</h5>
-            <div id="loader-expand"></div>
+        {
+          !this.state.loaded &&
+          <div id="loader" className={"container-dark " + this.state.loader}>
+            <div id="loader-inner">
+              <h5>Loading</h5>
+              <div id="loader-expand"></div>
+            </div>
           </div>
-        </div> */}
+        }
   
         {/* Content */}
         <div id="fade-wrapper">
