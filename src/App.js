@@ -6,6 +6,10 @@ import Profile from './assets/images/profile_square.png';
 import IconContainer from './components/IconContainer';
 import items from './assets/js/portfolioItems';
 import PortfolioItem from './components/PortfolioItem';
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
+
+const animatedComponents = makeAnimated();
 
 class App extends Component {
   constructor (props) {
@@ -15,6 +19,9 @@ class App extends Component {
       loader: ''
     }
     this.filters = ["React", "Node", "Express", "MERN", "MongoDB", "MySQL", "UI/UX", "Mobile-First", "Vanilla JS", "AJAX", "ES6", "Sass", "Bootstrap", "Materialize", "jQuery"]
+    this.filterOptions = this.filters.map(x => {
+      return { value: x, label: x }
+    })
   }
 
   componentDidMount () {
@@ -45,11 +52,24 @@ class App extends Component {
       pattern.canvas(document.getElementById('canvas-basic'));
   }
 
-  filterHandler = (filter) => {
-    const filtered = items.filter(x => {
-      return x.tags.indexOf(filter) > -1;
-    });
-    console.log(filtered);
+  filterHandler = (input) => {
+    const filterArr = input || false;
+    let filtered = [];
+    if (filterArr) {
+      const filters = filterArr.map(x => x.value);
+      const filteredTitles = [];
+      for (let y of filters) {
+        for (let x of items) {
+          if (x.tags.indexOf(y) > -1 && filteredTitles.indexOf(x.title) < 0){
+              filteredTitles.push(x.title);
+              filtered.push(x);
+          }
+        }
+      }
+
+    } else {
+      filtered = [...items];
+    }
     this.setState({
       portfolio: [...filtered]
     })
@@ -177,7 +197,19 @@ class App extends Component {
               </div>
   
               <div className="wrapper">
-              <button style={{color: 'white'}} onClick={() => { this.filterHandler('jQuery') }}>JAVASCRIPT</button>
+                <div className="row">
+                  <div className='col col-6'>
+                    <Select 
+                      options={this.filterOptions} 
+                      isMulti
+                      name="filter"
+                      className="basic-multi-select"
+                      classNamePrefix="select"
+                      components={animatedComponents}
+                      onChange={this.filterHandler}
+                    />
+                  </div>
+                </div>
                 <div className="row">
                   <div id="portfolio" className="col col-6 grid">
                     { this.state.loader &&
