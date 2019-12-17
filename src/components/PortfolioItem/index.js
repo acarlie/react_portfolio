@@ -1,7 +1,6 @@
 import React from 'react';
 
 function PortfolioItem (props) {
-    console.log(process.env.PUBLIC_URL);
     return(
         <figure className="grid-item aos-init aos-animate" data-aos="fade-up">
             <img className="grid-item-img" src={process.env.PUBLIC_URL + 'assets/images/sm/' + props.img} alt={props.desc} />

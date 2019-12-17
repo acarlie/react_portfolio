@@ -51,7 +51,6 @@ hr.home{
     display: flex;
     flex-direction: row-reverse;
     flex-wrap: nowrap;
-    width: 100%;
 }
 
 
@@ -68,6 +67,8 @@ hr.home{
     @include icon-box;
     width: 100%;
     z-index: 2;
+    word-wrap: break-word;
+    overflow: hidden;
 
     &:focus  ~ .icon, &:hover ~ .icon{
         color: $color-primary;

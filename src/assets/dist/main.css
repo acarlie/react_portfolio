@@ -129,8 +129,7 @@ hr.home {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
   flex-direction: row-reverse;
-  flex-wrap: nowrap;
-  width: 100%; }
+  flex-wrap: nowrap; }
 
 .icon {
   min-width: 50px;
@@ -148,7 +147,9 @@ hr.home {
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
   padding: 0.8em;
   width: 100%;
-  z-index: 2; }
+  z-index: 2;
+  word-wrap: break-word;
+  overflow: hidden; }
   .icon-content:focus ~ .icon, .icon-content:hover ~ .icon {
     color: #f857a8; }
 

@@ -14,13 +14,16 @@ class App extends Component {
       loaded: false,
       loader: ''
     }
+    this.filters = ["React", "Node", "Express", "MERN", "MongoDB", "MySQL", "UI/UX", "Mobile-First", "Vanilla JS", "AJAX", "ES6", "Sass", "Bootstrap", "Materialize", "jQuery"]
   }
+
   componentDidMount () {
     this.setBg();
     window.addEventListener("resize", this.setBg.bind(this));
     setTimeout(() => {
       this.setState({
-        loader: 'done'
+        loader: 'done',
+        portfolio: [...items]
       })
     }, 3000)
     setTimeout(() => {
@@ -28,6 +31,7 @@ class App extends Component {
         loaded: true
       })
     }, 4000)
+    // this.getFilters(items);
   }
 
   setBg = () => {
@@ -41,8 +45,17 @@ class App extends Component {
       pattern.canvas(document.getElementById('canvas-basic'));
   }
 
-  render () {
+  filterHandler = (filter) => {
+    const filtered = items.filter(x => {
+      return x.tags.indexOf(filter) > -1;
+    });
+    console.log(filtered);
+    this.setState({
+      portfolio: [...filtered]
+    })
+  }
 
+  render () {
     return (
       <div className="App">
 
@@ -100,25 +113,22 @@ class App extends Component {
                 <div className="row">
   
                   <div className="col col-2">
-                    <div id="profile-wrapper" className="profile-wrapper">
+                    <div id="profile-wrapper" className="profile-wrapper aos-init aos-animate" data-aos='fade-up'>
                       <img src={Profile} alt="" className="img-responsive img-profile" />
-                      <div className="icon-container">
-                        <div className="icon-content">Amelia Carlie</div>
-                        <span className="icon"><i className="fas fa-user"></i></span>
-                      </div>
-                      <div className="icon-container">
-                        <div className="icon-content">ameliacarlie@gmail.com</div>
-                        <span className="icon"><i className="fas fa-at"></i></span>
-                      </div>
-                      <div className="icon-container">
-                        <div className="icon-content">Chapel Hill, NC</div>
-                        <span className="icon"><i className="fas fa-map-marker-alt"></i></span>
-                      </div>
+                      <IconContainer icon='user'>
+                        Amelia Carlie
+                      </IconContainer>
+                      <IconContainer icon='at'>
+                        ameliacarlie@gmail.com
+                      </IconContainer>
+                      <IconContainer icon='map-marker-alt'>
+                        Chapel Hill, NC
+                      </IconContainer>
                     </div>
                   </div>
   
                   <div className="col col-4">
-                    <IconContainer icon='info'>
+                    <IconContainer icon='info' info fade>
                       <p>
                         I am a full-stack developer passionate about UI/UX. My love of coding started early on, styling Neopets guild layouts in the early 2000s. Since then, D.R.Y. has become a personal mantra.
                       </p>
@@ -126,7 +136,7 @@ class App extends Component {
                         With 5 years experience in the graphic design field, I am now applying my knowledge of color theory and composition to my daily development projects.
                       </p>
                     </IconContainer>
-                    <IconContainer icon='code'>
+                    <IconContainer icon='code' info fade>
                         <ul className="primary-list">
                           <li><span className="heading">Languages:</span> HTML5, CSS3, JavaScript(ES5 & ES6)</li>
                           <li><span className="heading">Frameworks:</span> React</li>
@@ -136,13 +146,13 @@ class App extends Component {
                           <li><span className="heading">Other Technologies:</span> Node.js</li>
                         </ul>
                     </IconContainer>
-                    <IconContainer icon='pencil-ruler'>
+                    <IconContainer icon='pencil-ruler' info fade>
                       <ul className="primary-list">
                         <li><span className="heading">Tools:</span> PhotoShop, Illustrator, InDesign, Adobe XD</li>
                         <li><span className="heading">Design:</span> Color Theory, Illustration, Typography, Branding, Composition</li>
                       </ul>
                     </IconContainer>
-                    <IconContainer icon='pizza-slice'>
+                    <IconContainer icon='pizza-slice' info fade>
                       <ul className="primary-list">
                         <li><span className="heading">Hobbies:</span> Photography, Making Pizza</li>
                       </ul>
@@ -167,12 +177,14 @@ class App extends Component {
               </div>
   
               <div className="wrapper">
+              <button style={{color: 'white'}} onClick={() => { this.filterHandler('jQuery') }}>JAVASCRIPT</button>
                 <div className="row">
                   <div id="portfolio" className="col col-6 grid">
-                    {
-                      items.map((item, i) => {
+                    { this.state.loader &&
+                      this.state.portfolio.map((item, i) => {
                         return(
                           <PortfolioItem
+                            key={i}
                             title={item.title}
                             img={item.img}
                             url={item.url}
