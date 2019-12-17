@@ -11,7 +11,9 @@ footer{
 
 .footer-bottom{
     color: $color-neutral-med;
-    height: 4em;
-    line-height: 4em;
-    margin: 0;
+    padding: $box-padding;
+    margin-bottom: 2em;
+    p {
+        margin-bottom: .25em;
+    }
 }

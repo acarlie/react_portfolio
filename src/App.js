@@ -55,7 +55,7 @@ class App extends Component {
   filterHandler = (input) => {
     const filterArr = input || false;
     let filtered = [];
-    if (filterArr) {
+    if (filterArr && filterArr.length > 0) {
       const filters = filterArr.map(x => x.value);
       const filteredTitles = [];
       for (let y of filters) {
@@ -245,8 +245,11 @@ class App extends Component {
             <section id="social" className="footer-top">
               <SocialLinks />
             </section>
-  
-            <p className="text-center text-sm footer-bottom">© Amelia Carlie 2019</p>
+          
+            <div className="text-center text-sm footer-bottom">
+              <p> - Created with React <i className="fab fa-react"></i> - </p>
+              <p>© Amelia Carlie 2019</p>
+            </div>
   
           </footer>
         </div>
