@@ -1,16 +1,33 @@
 import React, { Component } from 'react';
+
+// packages
 import Trianglify from 'trianglify';
-import TypeWriter from './components/TypeWriter';
-import SocialLinks from './components/SocialLinks';
-import Profile from './assets/images/profile_square.png';
-import IconContainer from './components/IconContainer';
-import items from './assets/js/portfolioItems';
-import PortfolioItem from './components/PortfolioItem';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
+import ScrollAnimation from 'react-animate-on-scroll';
+
+//components
+import TypeWriter from './components/TypeWriter';
+import SocialLinks from './components/SocialLinks';
+import IconContainer from './components/IconContainer';
+import PortfolioItem from './components/PortfolioItem';
+
+//assets
+import Profile from './assets/images/profile_square.png';
+import items from './assets/js/portfolioItems';
+
+//css
+import "animate.css/animate.min.css";
 
 const animatedComponents = makeAnimated();
-
+const menuStyles = {
+  menu: (provided, state) => ({
+    ...provided,
+    padding: 10
+    // borderRadius: 0
+    // overflow: 'hidden'
+  })
+}
 class App extends Component {
   constructor (props) {
     super(props);
@@ -133,18 +150,20 @@ class App extends Component {
                 <div className="row">
   
                   <div className="col col-2">
-                    <div id="profile-wrapper" className="profile-wrapper aos-init aos-animate" data-aos='fade-up'>
-                      <img src={Profile} alt="" className="img-responsive img-profile" />
-                      <IconContainer icon='user'>
-                        Amelia Carlie
-                      </IconContainer>
-                      <IconContainer icon='at'>
-                        ameliacarlie@gmail.com
-                      </IconContainer>
-                      <IconContainer icon='map-marker-alt'>
-                        Chapel Hill, NC
-                      </IconContainer>
-                    </div>
+                    <ScrollAnimation animateIn="fadeIn" animateOut='fadeOut' offset={0} duration={.5}>
+                      <div id="profile-wrapper" className="profile-wrapper">
+                        <img src={Profile} alt="" className="img-responsive img-profile" />
+                        <IconContainer icon='user'>
+                          Amelia Carlie
+                        </IconContainer>
+                        <IconContainer icon='at'>
+                          ameliacarlie@gmail.com
+                        </IconContainer>
+                        <IconContainer icon='map-marker-alt'>
+                          Chapel Hill, NC
+                        </IconContainer>
+                      </div>
+                    </ScrollAnimation>
                   </div>
   
                   <div className="col col-4">
@@ -205,8 +224,21 @@ class App extends Component {
                       name="filter"
                       className="basic-multi-select"
                       classNamePrefix="select"
+                      placeholder='Filter by tags...'
                       components={animatedComponents}
                       onChange={this.filterHandler}
+                      styles={menuStyles}
+                      theme={theme => ({
+                        ...theme,
+                        borderRadius: 8,
+                        colors: {
+                          ...theme.colors,
+                          primary: '#FF4F69',
+                          primary75: '#FF6F84',
+                          primary50: '#FF8F9F',
+                          primary25: '#FFAFBA'
+                        }
+                      })}
                     />
                   </div>
                 </div>

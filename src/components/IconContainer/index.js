@@ -1,10 +1,10 @@
 import React from 'react';
+import ScrollAnimation from 'react-animate-on-scroll';
 
-function IconContainer (props) {
+function IconContainerInner (props) {
     const info = props.info ? 'icon-container-info' : '';
-    const fade = props.fade ? 'fade-up' : '';
     return (
-        <div className={`icon-container ${info} aos-init aos-animate`} data-aos={fade}>
+        <div className={`icon-container ${info}`}>
             <div className='icon-content'>
                 {props.children}
             </div>
@@ -12,6 +12,24 @@ function IconContainer (props) {
                 <i className={`fas fa-${props.icon || 'info'}`}></i>
             </span>
         </div>
+    );
+}
+
+function IconContainer (props) {
+    const fade = props.fade ? 'fade-up' : '';
+    return (
+        <> 
+            { 
+                fade &&
+                <ScrollAnimation animateIn="fadeIn" animateOut='fadeOut' offset={0} duration={.5}>
+                    <IconContainerInner {...props} />
+                </ScrollAnimation>
+            }
+            { 
+                !fade &&
+                <IconContainerInner {...props} />
+            }
+        </>
     )
 }
 
